@@ -16,9 +16,11 @@ module.exports = {
       {
         test: /.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-        },
+        use: "babel-loader",
+      },
+      {
+        test: /.css$/,
+        use: ["style-loader", "css-loader"],
       },
     ],
   },
@@ -30,7 +32,7 @@ module.exports = {
       template: "./public/index.html",
     }),
     new ModuleFederationPlugin({
-      name: "mfe-pagination",
+      name: "mfe_pagination",
       filename: "remoteEntry.js",
       exposes: { "./Pagination": "./src/App" },
       shared: packageJson.dependencies,
