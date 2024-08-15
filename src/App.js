@@ -1,1 +1,5 @@
-export const App = () => <div>APP: MFE Pagination</div>;
+import { Pagination } from "./components/Pagination";
+
+export const App = () => {
+  return <Pagination />;
+};
