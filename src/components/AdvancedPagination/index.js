@@ -1,18 +1,18 @@
 import { useEffect, useState } from "react";
-import { Pure } from "./Pure";
 import {
   INITIAL_PAGE_NO,
   ITEMS_PER_PAGE,
   TOTAL_ITEMS,
 } from "./../../constants";
+import { Pure } from "./Pure";
 
-const getData = async (limit) => {
+const getData = async (totalItems) => {
   await setTimeout(1000);
 
-  return new Array(limit).fill().map((_, index) => `Data ${index + 1}`);
+  return new Array(totalItems).fill().map((_, index) => `Data: ${index + 1}`);
 };
 
-export const Pagination = () => {
+export const AdvancedPagination = () => {
   const [currentPage, setCurrentPage] = useState(INITIAL_PAGE_NO);
   const [data, setData] = useState([]);
   const [currentData, setCurrentData] = useState(null);
@@ -21,8 +21,8 @@ export const Pagination = () => {
     loadInitialData(TOTAL_ITEMS);
   }, []);
 
-  const loadInitialData = async (limit) => {
-    const newData = await getData(limit);
+  const loadInitialData = async (totalItems) => {
+    const newData = await getData(totalItems);
 
     setData(newData);
     if (currentPage > 0) {
