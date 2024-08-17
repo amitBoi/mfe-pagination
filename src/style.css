@@ -1,4 +1,9 @@
+* {
+  font-family: Roboto, Arial, sans-serif;
+}
+
 a {
+  font-size: 18px;
   text-decoration: none;
 }
 
