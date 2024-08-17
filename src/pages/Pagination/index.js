@@ -4,7 +4,7 @@ import {
   INITIAL_PAGE_NO,
   ITEMS_PER_PAGE,
   TOTAL_ITEMS,
-} from "./../../constants";
+} from "../../constants";
 
 const getData = async (limit) => {
   await setTimeout(1000);

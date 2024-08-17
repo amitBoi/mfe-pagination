@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import { Pagination } from "./components/Pagination";
-import { AdvancedPagination } from "./components/AdvancedPagination";
-import { InfiniteScroll } from "./components/InfiniteScroll";
+import { Pagination } from "./pages/Pagination";
+import { AdvancedPagination } from "./pages/AdvancedPagination";
+import { InfiniteScroll } from "./pages/InfiniteScroll";
 import { ROUTES } from "./constants";
 
 export const Routing = () => (

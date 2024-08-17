@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { FixedSizeList } from "react-window";
-import { HEIGHT, LIMIT } from "./../../constants";
+import { HEIGHT, LIMIT } from "../../constants";
+import { ContentSkeleton } from "../../components/ContentSkeleton";
 
 const getData = async (startIndex, limit) => {
   await setTimeout(1000);
@@ -29,7 +30,7 @@ export const InfiniteScroll = () => {
     setLoading(false);
 
     if (newItems.length < LIMIT) {
-      setLoading(false);
+      setHasMore(false);
     }
   };
 
@@ -55,8 +56,7 @@ export const InfiniteScroll = () => {
   );
 
   return (
-    <div className="wrapper">
-      <h2>Infinite Scroll</h2>
+    <ContentSkeleton title="Infinite Scroll">
       <FixedSizeList
         itemCount={items.length}
         itemSize={LIMIT}
@@ -75,6 +75,6 @@ export const InfiniteScroll = () => {
           return <div style={style}>{items[index]}</div>;
         }}
       </FixedSizeList>
-    </div>
+    </ContentSkeleton>
   );
 };

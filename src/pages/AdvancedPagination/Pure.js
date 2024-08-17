@@ -1,3 +1,5 @@
+import { ContentSkeleton } from "../../components/ContentSkeleton";
+
 export const Pure = ({
   currentPage,
   currentData,
@@ -21,18 +23,20 @@ export const Pure = ({
   };
 
   return (
-    <div className="wrapper">
-      <h2>Current Data: {currentData}</h2>
+    <ContentSkeleton title="Advanced Pagination">
+      <h3>Current Data: {currentData}</h3>
       <h4>Current Page: {currentPage}</h4>
       <ul>
         {currentPage > 2 && renderPageButton(1)}
-        {currentPage > 3 && renderPageButton()}
+        {currentPage > 3 && renderPageButton(2)}
+        {currentPage > 4 && renderPageButton()}
         {renderPageButton(currentPage - 1)}
         {renderPageButton(currentPage)}
         {renderPageButton(currentPage + 1)}
-        {currentPage < totalPages - 2 && renderPageButton()}
+        {currentPage < totalPages - 3 && renderPageButton()}
+        {currentPage < totalPages - 2 && renderPageButton(totalPages - 1)}
         {currentPage < totalPages - 1 && renderPageButton(totalPages)}
       </ul>
-    </div>
+    </ContentSkeleton>
   );
 };
