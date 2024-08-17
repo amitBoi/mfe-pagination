@@ -1,3 +1,17 @@
+a {
+  text-decoration: none;
+}
+
+a.active,
+a:hover {
+  color: red !important;
+  font-weight: 600;
+}
+
+a:visited {
+  color: inherit;
+}
+
 ul {
   display: flex;
 }

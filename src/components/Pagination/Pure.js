@@ -1,5 +1,3 @@
-import "./style.css";
-
 export const Pure = ({
   currentPage,
   currentData,

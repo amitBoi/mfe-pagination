@@ -1,13 +1,15 @@
-import { AdvancedPagination } from "./components/AdvancedPagination";
-import { InfiniteScroll } from "./components/InfiniteScroll";
-import { Pagination } from "./components/Pagination";
+import { BrowserRouter } from "react-router-dom";
+import { Header } from "./components/Header";
+import { Routing } from "./routes";
+import "./style.css";
 
-export const App = () => {
-  return (
-    <>
-      <Pagination />
-      <AdvancedPagination />
-      <InfiniteScroll />
-    </>
-  );
-};
+export const App = () => (
+  <BrowserRouter>
+    <nav>
+      <Header />
+    </nav>
+    <div>
+      <Routing />
+    </div>
+  </BrowserRouter>
+);
