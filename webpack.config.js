@@ -1,6 +1,7 @@
 const path = require("path");
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const dependencies = require("./package.json").dependencies;
 
 module.exports = {
   mode: "development",
@@ -27,17 +28,25 @@ module.exports = {
     extensions: [".js", ".jsx"],
   },
   plugins: [
-    new HTMLWebpackPlugin({
-      template: "./public/index.html",
-    }),
     new ModuleFederationPlugin({
       name: "mfe_pagination",
       filename: "remoteEntry.js",
-      exposes: { "./Pagination": "./bootstrap" },
+      exposes: { App: "./src/App" },
       shared: {
-        react: { singleton: true, eager: true },
-        "react-dom": { singleton: true, eager: true },
+        react: {
+          singleton: true,
+          eager: true,
+          requiredVersion: dependencies.react,
+        },
+        "react-dom": {
+          singleton: true,
+          eager: true,
+          requiredVersion: dependencies["react-dom"],
+        },
       },
+    }),
+    new HTMLWebpackPlugin({
+      template: "./public/index.html",
     }),
   ],
   devServer: {
