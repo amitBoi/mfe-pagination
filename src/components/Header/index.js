@@ -1,30 +1,31 @@
 import { NavLink } from "react-router-dom";
 import { ROUTES } from "./../../constants";
+import * as classes from "./index.module.css";
 
 export const Header = () => (
-  <ul>
+  <ul className={classes.menu}>
     <NavigationLink
-      navigationLink={ROUTES.pagination}
-      navigationName="Pagination"
+      link={ROUTES.pagination}
+      title="Pagination"
     />
     <NavigationLink
-      navigationLink={ROUTES.advancedPagination}
-      navigationName="Advanced Pagination"
+      link={ROUTES.advancedPagination}
+      title="Advanced Pagination"
     />
     <NavigationLink
-      navigationLink={ROUTES.infiniteScroll}
-      navigationName="Infinite Scroll"
+      link={ROUTES.infiniteScroll}
+      title="Infinite Scroll"
     />
   </ul>
 );
 
-const NavigationLink = ({ navigationLink, navigationName }) => (
+const NavigationLink = ({ link, title }) => (
   <li>
     <NavLink
-      to={navigationLink}
-      className={({ isActive }) => (isActive ? "active" : "")}
+      to={link}
+      className={({ isActive }) => (isActive ? classes.active : "")}
     >
-      {navigationName}
+      {title}
     </NavLink>
   </li>
 );

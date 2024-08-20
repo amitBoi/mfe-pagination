@@ -19,7 +19,7 @@ module.exports = {
         use: "babel-loader",
       },
       {
-        test: /.css$/,
+        test: /\.css$/,
         use: ["style-loader", "css-loader"],
       },
     ],
@@ -31,7 +31,7 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "mfe_pagination",
       filename: "remoteEntry.js",
-      exposes: { App: "./src/App" },
+      exposes: { "App": "./src/App" },
       shared: {
         react: {
           singleton: true,

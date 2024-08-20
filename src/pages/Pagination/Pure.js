@@ -1,4 +1,5 @@
 import { ContentSkeleton } from "../../components/ContentSkeleton";
+import * as classes from "./index.module.css";
 
 export const Pure = ({
   currentPage,
@@ -26,7 +27,7 @@ export const Pure = ({
     <ContentSkeleton title="Pagination">
       <h3>Current Data: {currentData}</h3>
       <h4>Current Page: {currentPage}</h4>
-      <ul>
+      <ul className={classes.list}>
         {currentPage > 2 && renderPageButton(1)}
         {currentPage > 3 && renderPageButton()}
         {renderPageButton(currentPage - 1)}

@@ -1,6 +1,8 @@
+import * as classes from './index.module.css';
+
 export const ContentSkeleton = ({ title, children }) => (
-  <div className="wrapper">
-    <h2 className="page-title">{title}</h2>
+  <div className={classes.wrapper}>
+    <h2 className={classes.pageTitle}>{title}</h2>
     {children}
   </div>
 );
