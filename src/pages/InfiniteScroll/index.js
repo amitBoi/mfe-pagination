@@ -1,14 +1,12 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { FixedSizeList } from "react-window";
-import { HEIGHT, LIMIT } from "@constants";
-import { ContentSkeleton } from "@components/ContentSkeleton";
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { FixedSizeList } from 'react-window';
+import { HEIGHT, LIMIT } from '@constants';
+import { ContentSkeleton } from '@components/ContentSkeleton';
 
 const getData = async (startIndex, limit) => {
   await setTimeout(1000);
 
-  return new Array(limit)
-    .fill()
-    .map((_, index) => `Data ${startIndex + index + 1}`);
+  return new Array(limit).fill().map((_, index) => `Data ${startIndex + index + 1}`);
 };
 
 export const InfiniteScroll = () => {
@@ -52,17 +50,12 @@ export const InfiniteScroll = () => {
         observer.current.observe(element);
       }
     },
-    [items]
+    [items],
   );
 
   return (
     <ContentSkeleton title="Infinite Scroll">
-      <FixedSizeList
-        itemCount={items.length}
-        itemSize={LIMIT}
-        height={HEIGHT}
-        width={"50%"}
-      >
+      <FixedSizeList itemCount={items.length} itemSize={LIMIT} height={HEIGHT} width={'50%'}>
         {({ index, style }) => {
           if (index === items.length - 1) {
             return (

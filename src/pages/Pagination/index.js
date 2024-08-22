@@ -1,10 +1,6 @@
-import { useEffect, useState } from "react";
-import { Pure } from "@pages/Pagination/Pure";
-import {
-  INITIAL_PAGE_NO,
-  ITEMS_PER_PAGE,
-  TOTAL_ITEMS,
-} from "@constants";
+import { useEffect, useState } from 'react';
+import { Pure } from '@pages/Pagination/Pure';
+import { INITIAL_PAGE_NO, ITEMS_PER_PAGE, TOTAL_ITEMS } from '@constants';
 
 const getData = async (limit) => {
   await setTimeout(1000);
@@ -37,12 +33,5 @@ export const Pagination = () => {
     setCurrentData(data[pageNo - 1]);
   };
 
-  return (
-    <Pure
-      currentPage={currentPage}
-      currentData={currentData}
-      totalPages={data.length / ITEMS_PER_PAGE}
-      onPageChange={onPageChange}
-    />
-  );
+  return <Pure currentPage={currentPage} currentData={currentData} totalPages={data.length / ITEMS_PER_PAGE} onPageChange={onPageChange} />;
 };

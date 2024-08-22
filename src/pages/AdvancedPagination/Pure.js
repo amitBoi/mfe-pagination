@@ -1,12 +1,7 @@
 import { ContentSkeleton } from '@components/ContentSkeleton';
-import * as classes from '@pages/Pagination/index.module.css'
+import * as classes from '@pages/Pagination/index.module.css';
 
-export const Pure = ({
-  currentPage,
-  currentData,
-  totalPages,
-  onPageChange,
-}) => {
+export const Pure = ({ currentPage, currentData, totalPages, onPageChange }) => {
   const handlePageChange = (pageNo) => () => onPageChange(pageNo);
 
   const renderPageButton = (pageNo) => {
