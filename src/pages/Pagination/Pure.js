@@ -1,4 +1,4 @@
-import { ContentSkeleton } from "../../components/ContentSkeleton";
+import { ContentSkeleton } from "@components/ContentSkeleton";
 import * as classes from "./index.module.css";
 
 export const Pure = ({

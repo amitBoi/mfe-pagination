@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { FixedSizeList } from "react-window";
-import { HEIGHT, LIMIT } from "../../constants";
-import { ContentSkeleton } from "../../components/ContentSkeleton";
+import { HEIGHT, LIMIT } from "@constants";
+import { ContentSkeleton } from "@components/ContentSkeleton";
 
 const getData = async (startIndex, limit) => {
   await setTimeout(1000);

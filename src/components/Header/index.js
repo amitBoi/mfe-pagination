@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { ROUTES } from "./../../constants";
+import { ROUTES } from "@constants";
 import * as classes from "./index.module.css";
 
 export const Header = () => (

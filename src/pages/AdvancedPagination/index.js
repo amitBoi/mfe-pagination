@@ -3,8 +3,8 @@ import {
   INITIAL_PAGE_NO,
   ITEMS_PER_PAGE,
   TOTAL_ITEMS,
-} from "./../../constants";
-import { Pure } from "./Pure";
+} from "@constants";
+import { Pure } from "@pages/AdvancedPagination/Pure";
 
 const getData = async (totalItems) => {
   await setTimeout(1000);

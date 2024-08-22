@@ -1,5 +1,5 @@
-import { ContentSkeleton } from "../../components/ContentSkeleton";
-import * as classes from './../Pagination/index.module.css'
+import { ContentSkeleton } from '@components/ContentSkeleton';
+import * as classes from '@pages/Pagination/index.module.css'
 
 export const Pure = ({
   currentPage,
