@@ -1,5 +1,6 @@
 import { HashRouter } from 'react-router-dom';
 import { Header } from '@components/Header';
+import { GenericLoader } from '@components/GenericLoader';
 import { Routing } from './routes';
 
 const App = () => (
@@ -10,6 +11,7 @@ const App = () => (
     <div>
       <Routing />
     </div>
+    <GenericLoader />
   </HashRouter>
 );
 

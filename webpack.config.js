@@ -1,14 +1,14 @@
-const path = require("path");
-const HTMLWebpackPlugin = require("html-webpack-plugin");
-const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const dependencies = require("./package.json").dependencies;
+const path = require('path');
+const HTMLWebpackPlugin = require('html-webpack-plugin');
+const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
+const dependencies = require('./package.json').dependencies;
 
 module.exports = {
-  mode: "development",
-  entry: "./index.js",
+  mode: 'development',
+  entry: './index.js',
   output: {
-    path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js',
     clean: true,
   },
   module: {
@@ -16,42 +16,45 @@ module.exports = {
       {
         test: /.(js|jsx)$/,
         exclude: /node_modules/,
-        use: "babel-loader",
+        use: 'babel-loader',
       },
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
   resolve: {
-    extensions: [".js", ".jsx"],
+    extensions: ['.js', '.jsx'],
     alias: {
-      "@pages": path.resolve(__dirname, "src/pages"),
-      "@components": path.resolve(__dirname, "src/components"),
-      "@constants": path.resolve(__dirname, "src/constants"),
+      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@constants': path.resolve(__dirname, 'src/constants'),
+      '@store': path.resolve(__dirname, 'src/store'),
+      '@services': path.resolve(__dirname, 'src/services'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
     },
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: "mfe_pagination",
-      filename: "remoteEntry.js",
-      exposes: { "App": "./src/App" },
+      name: 'mfe_pagination',
+      filename: 'remoteEntry.js',
+      exposes: { App: './src/App' },
       shared: {
         react: {
           singleton: true,
           eager: true,
           requiredVersion: dependencies.react,
         },
-        "react-dom": {
+        'react-dom': {
           singleton: true,
           eager: true,
-          requiredVersion: dependencies["react-dom"],
+          requiredVersion: dependencies['react-dom'],
         },
       },
     }),
     new HTMLWebpackPlugin({
-      template: "./public/index.html",
+      template: './public/index.html',
     }),
   ],
   devServer: {
