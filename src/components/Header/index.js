@@ -4,6 +4,7 @@ import * as classes from './index.module.css';
 
 export const Header = () => (
   <ul className={classes.menu}>
+    <NavigationLink link={ROUTES.infiniteScrollWithAPI} title="Infinite Scroll with API" />
     <NavigationLink link={ROUTES.pagination} title="Pagination" />
     <NavigationLink link={ROUTES.advancedPagination} title="Advanced Pagination" />
     <NavigationLink link={ROUTES.infiniteScroll} title="Infinite Scroll" />
