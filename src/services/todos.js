@@ -5,7 +5,6 @@ export const api = () => ({
     apiDetails: {
       url: URLS.TODOS,
       method: 'GET',
-      isFullUrl: true,
     },
   },
 });

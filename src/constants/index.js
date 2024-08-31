@@ -6,12 +6,13 @@ export const LIMIT = 30;
 export const HEIGHT = 400;
 
 export const ROUTES = {
-  pagination: '/',
+  pagination: '/pagination',
   advancedPagination: '/advanced-pagination',
   infiniteScroll: '/infinite-scroll',
   infiniteScrollWithAPI: '/infinite-scroll-with-api',
+  infiniteScrollWithData: '/infinite-scroll-with-data',
 };
 
 export const URLS = {
-  TODOS: 'https://jsonplaceholder.typicode.com/todos',
+  TODOS: '/todos',
 };

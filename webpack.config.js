@@ -33,6 +33,7 @@ module.exports = {
       '@store': path.resolve(__dirname, 'src/store'),
       '@services': path.resolve(__dirname, 'src/services'),
       '@utils': path.resolve(__dirname, 'src/utils'),
+      '@configs': path.resolve(__dirname, 'src/configs'),
     },
   },
   plugins: [

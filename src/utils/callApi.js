@@ -1,3 +1,4 @@
+import { getConfig } from '@configs/index';
 import { HttpClient } from './httpClient';
 
 const getCommonHeaders = () => {
@@ -17,11 +18,12 @@ export const callApi = async ({ apiDetails, data = null }) => {
   const httpClient = new HttpClient();
   const commonHeaders = getCommonHeaders();
   const headers = { ...commonHeaders, ...requestHeaders };
+  const { baseUrl } = getConfig();
 
-  //TODO: handle full and relative urls
+  const completeUrl = isFullUrl ? url : baseUrl + url;
 
   const response = await httpClient.request({
-    url,
+    url: completeUrl,
     method,
     headers,
     data,
