@@ -1,6 +1,6 @@
-import { defaultConfig as baseConfig } from './config';
+import { defaultConfig as baseConfig } from './config.js';
 
-export const sad = {
+export const defaultConfig = {
   ...baseConfig,
   env: 'uat',
 };

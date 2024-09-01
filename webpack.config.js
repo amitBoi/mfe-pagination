@@ -1,44 +1,109 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 const ModuleFederationPlugin = require('webpack/lib/container/ModuleFederationPlugin');
-const dependencies = require('./package.json').dependencies;
+const { dependencies, version } = require('./package.json');
+const mfeDefination = require('./mfe.def');
 
-module.exports = {
-  mode: 'development',
-  entry: './index.js',
+const ENVS = {
+  dev: 'dev',
+  uat: 'uat',
+  prod: 'prod',
+};
+const MODES = {
+  production: 'production',
+  development: 'development',
+};
+
+const getPath =
+  (folderName) =>
+  (...paths) =>
+    path.resolve(__dirname, folderName, ...paths);
+const getPathBuild = getPath('dist');
+const getPathSrc = getPath('src');
+const jsEntryPoint = getPath('.')('index.js');
+const publicJsEntryPoint = getPath('.')('public.js');
+const { MFE_ENV: env = ENVS.dev, PORT = 3000, baseUrl = env } = process?.env;
+
+const isProduction = env !== ENVS.dev;
+const fileVersion = `v${version.split('.').join('_')}`;
+
+let extensions = ['.js', '.jsx'];
+if (env === ENVS.prod) {
+  extensions = ['.prod.js', '.prod.jsx', ...extensions];
+} else if (env === ENVS.uat) {
+  extensions = ['.uat.js', '.uat.jsx', ...extensions];
+}
+
+const config = {
+  mode: isProduction ? MODES.production : MODES.development,
+  devtool: isProduction ? 'source-map' : 'eval-source-map',
+  entry: isProduction ? publicJsEntryPoint : jsEntryPoint,
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    publicPath: 'auto',
+    path: getPathBuild(),
+    filename: `assets/js/[name].[chunkhash].${fileVersion}.js`,
+    sourceMapFilename: `assets/js/[name].[chunkhash].${fileVersion}.map`,
+    pathinfo: !isProduction,
     clean: true,
   },
   module: {
     rules: [
       {
-        test: /.(js|jsx)$/,
+        test: /\.(jsx?)$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /\.(png|gif|jpe?g|svg|woff?2|ttf|eot)$/,
+        type: 'asset/resource',
+      },
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions,
     alias: {
-      '@pages': path.resolve(__dirname, 'src/pages'),
-      '@components': path.resolve(__dirname, 'src/components'),
-      '@constants': path.resolve(__dirname, 'src/constants'),
-      '@store': path.resolve(__dirname, 'src/store'),
-      '@services': path.resolve(__dirname, 'src/services'),
-      '@utils': path.resolve(__dirname, 'src/utils'),
-      '@configs': path.resolve(__dirname, 'src/configs'),
+      '@app': getPathSrc('.'),
+      '@pages': getPathSrc('pages'),
+      '@components': getPathSrc('components'),
+      '@constants': getPathSrc('constants'),
+      '@utils': getPathSrc('utils'),
+      '@services': getPathSrc('services'),
+      '@store': getPathSrc('store'),
+      '@configs': getPathSrc('configs'),
     },
+  },
+  optimization: {
+    minimize: isProduction,
+    minimizer: isProduction
+      ? [
+          new TerserPlugin({
+            terserOptions: {
+              warnings: false,
+              compress: {
+                drop_debugger: true,
+                dead_code: true,
+                drop_console: false,
+                pure_funcs: ['console.log', 'console.info', 'console.warn', 'console.debug'],
+              },
+              format: {
+                comments: false,
+              },
+            },
+            extractComments: false,
+          }),
+        ]
+      : [],
   },
   plugins: [
     new ModuleFederationPlugin({
-      name: 'mfe_pagination',
+      name: mfeDefination.name,
       filename: 'remoteEntry.js',
       exposes: { App: './src/App' },
       shared: {
@@ -55,12 +120,23 @@ module.exports = {
       },
     }),
     new HTMLWebpackPlugin({
-      template: './public/index.html',
+      template: getPath('public')('index.html'),
+      htmlVersion: `${mfeDefination.name}-${Date.now()}-${env}@${version}`,
+      mfeTitle: `${mfeDefination.name}@${version}`,
+      env,
+      minify: {
+        removeComments: false,
+        collapseWhitespace: true,
+      },
     }),
   ],
   devServer: {
-    port: 5000,
+    static: getPathBuild(),
+    port: mfeDefination.port,
     hot: true,
+    compress: false,
     historyApiFallback: true,
   },
 };
+
+module.exports = config;

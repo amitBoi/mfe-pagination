@@ -2,12 +2,12 @@ import { getConfig } from '@configs/index';
 import { HttpClient } from './httpClient';
 
 const getCommonHeaders = () => {
+  const { token = sessionStorage.getItem('token') } = getConfig();
   const commonHeaders = {
     'Content-Type': 'application/json',
     'cache-control': 'no-cache',
   };
 
-  const token = sessionStorage.getItem('token');
   if (token) {
     commonHeaders.authorization = `Bearer ${token}`;
   }
