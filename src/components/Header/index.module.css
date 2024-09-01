@@ -1,18 +1,20 @@
 .menu {
-    list-style: none;
-    display: flex;
-    margin: 30px 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  margin: 30px 0;
+  padding: 0;
+  flex-wrap: wrap;
 }
 
 .menu li a {
-    padding: 10px 15px;
-    margin-right: 20px;
-    border: 1px solid #d6d4d4;
-    border-radius: 4px;
-    text-align: center;
+  padding: 10px 15px;
+  margin: 10px 20px 0 0;
+  border: 1px solid #d6d4d4;
+  border-radius: 4px;
+  text-align: center;
+  display: block;
 }
 
 .active {
-    background-color: #f3ebeb;
+  background-color: #f3ebeb;
 }
