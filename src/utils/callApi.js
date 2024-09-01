@@ -1,4 +1,4 @@
-import { getConfig } from '@configs/index';
+import { getConfig } from '@app/configs/index';
 import { HttpClient } from './httpClient';
 
 const getCommonHeaders = () => {

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { INITIAL_PAGE_NO, ITEMS_PER_PAGE, TOTAL_ITEMS } from '@constants';
-import { Pure } from '@pages/AdvancedPagination/Pure';
+import { INITIAL_PAGE_NO, ITEMS_PER_PAGE, TOTAL_ITEMS } from '@app/constants';
+import { Pure } from '@app/pages/AdvancedPagination/Pure';
 
 const getData = async (totalItems) => {
   await setTimeout(1000);

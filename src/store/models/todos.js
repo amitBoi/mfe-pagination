@@ -1,6 +1,6 @@
-import { createSelector } from '@utils/createSelector';
-import { callApi } from '@utils/callApi';
-import { api } from '@services/todos';
+import { createSelector } from '@app/utils/createSelector';
+import { callApi } from '@app/utils/callApi';
+import { api } from '@app/services/todos';
 
 const todoSlice = (set) => ({
   todos: [],

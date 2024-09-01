@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { HashRouter } from 'react-router-dom';
-import { Header } from '@components/Header';
-import { FullPageLoader } from '@components/FullPageLoader';
-import { GenericLoader } from '@components/GenericLoader';
+import { Header } from '@app/components/Header';
+import { FullPageLoader } from '@app/components/FullPageLoader';
+import { GenericLoader } from '@app/components/GenericLoader';
 import { mergeConfig } from './configs';
 import { Routing } from './routes';
 

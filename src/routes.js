@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
-import { Pagination } from '@pages/Pagination';
-import { Layout } from '@components/Layout';
-import { AdvancedPagination } from '@pages/AdvancedPagination';
-import { InfiniteScroll } from '@pages/InfiniteScroll';
-import { InfiniteScrollWithAPI } from '@pages/InfiniteScrollWithAPI';
-import { InfiniteScrollWithData } from '@pages/InfiniteScrollWithData';
-import { FullPageLoader } from '@components/FullPageLoader';
-import { ROUTES } from '@constants';
+import { Pagination } from '@app/pages/Pagination';
+import { Layout } from '@app/components/Layout';
+import { AdvancedPagination } from '@app/pages/AdvancedPagination';
+import { InfiniteScroll } from '@app/pages/InfiniteScroll';
+import { InfiniteScrollWithAPI } from '@app/pages/InfiniteScrollWithAPI';
+import { InfiniteScrollWithData } from '@app/pages/InfiniteScrollWithData';
+import { FullPageLoader } from '@app/components/FullPageLoader';
+import { ROUTES } from '@app/constants';
 
 export const Routing = ({ defaultRoute, data }) => (
   <Routes>

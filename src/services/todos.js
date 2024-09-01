@@ -1,4 +1,4 @@
-import { URLS } from '@constants/index';
+import { URLS } from '@app/constants/index';
 
 export const api = () => ({
   TODOS_API: {

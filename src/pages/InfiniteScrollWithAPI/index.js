@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { FixedSizeList } from 'react-window';
-import { HEIGHT, LIMIT } from '@constants';
-import { ContentSkeleton } from '@components/ContentSkeleton';
-import { useTodos } from '@store/models/todos';
+import { HEIGHT, LIMIT } from '@app/constants';
+import { ContentSkeleton } from '@app/components/ContentSkeleton';
+import { useTodos } from '@app/store/models/todos';
 
 const getData = (data, startIndex, limit) => {
   return data.slice(startIndex, startIndex + limit).map(({ title }) => title);

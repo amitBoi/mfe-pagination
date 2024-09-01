@@ -70,13 +70,6 @@ const config = {
     extensions,
     alias: {
       '@app': getPathSrc('.'),
-      '@pages': getPathSrc('pages'),
-      '@components': getPathSrc('components'),
-      '@constants': getPathSrc('constants'),
-      '@utils': getPathSrc('utils'),
-      '@services': getPathSrc('services'),
-      '@store': getPathSrc('store'),
-      '@configs': getPathSrc('configs'),
     },
   },
   optimization: {

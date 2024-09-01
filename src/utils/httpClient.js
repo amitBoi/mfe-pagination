@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useGenericLoader } from '@store/models/genericLoader';
+import { useGenericLoader } from '@app/store/models/genericLoader';
 
 export class HttpClient {
   constructor(config) {
