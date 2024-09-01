@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { HashRouter } from 'react-router-dom';
 import { Header } from '@app/components/Header';
 import { FullPageLoader } from '@app/components/FullPageLoader';
-import { GenericLoader } from '@app/components/GenericLoader';
+import { GenericLoader } from '@app/features/GenericLoader';
 import { mergeConfig } from './configs';
 import { Routing } from './routes';
 

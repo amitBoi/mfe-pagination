@@ -1,4 +1,4 @@
-import { createSelector } from '@app/utils/createSelector';
+import { createSelector } from '@app/store/createSelector';
 
 const genericLoaderSlice = (set) => ({
   loadingCount: 0,

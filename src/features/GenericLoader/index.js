@@ -1,5 +1,5 @@
 import { FullPageLoader } from '@app/components/FullPageLoader';
-import { useGenericLoader } from '@app/store/models/genericLoader';
+import { useGenericLoader } from '@app/features/GenericLoader/genericLoader.slice';
 
 export const GenericLoader = () => {
   const loading = useGenericLoader.use.loading();
